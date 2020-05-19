@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+  {% set navlist = [
+  ('/', 'index', 'Index'),
+  ('/products', 'products', 'Products'),
+  ('/account', 'account', 'Account')
+  ] -%}
+  <nav>
+    <ul>
+      {% for href, id, caption in navlist %}
+      <li><a id="{{ id|e }}" href="{{ href|e }}">{{ caption|e }}</a></li>
+      {% endfor %}
+  </nav>
+  <p>
+    Hey Example 2 of the bootstrap was very funny!
+  </p>
+  ;
+</body>
+<html>

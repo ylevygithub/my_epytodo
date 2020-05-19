@@ -1,0 +1,32 @@
+from flask import jsonify
+import pymysql as sql
+from app import app
+
+@app.route('/user')
+def    route_all_users():
+    controller = MyController()
+    controller.home();
+    // to controller
+    result = ""
+    try:
+        ##We ’re creating connection between our mysql server and our app
+        connect = sql.connect(host='localhost',
+                              unix_socket='/var/lib/mysql/mysql.sock',
+                              user='root',
+                              passwd='password',
+                              db='MyData'
+                              )
+        ## We ’re retrieving a " pointer " aka " cursor " to our database
+        cursor = connect.cursor()
+        ## We ’re executing a SQL command ,
+        ## assuming that all tables are already created
+        cursor.execute("SELECT * from lucatable")
+        ## We ’re retrieving all results
+        result = cursor.fetchall()
+        ## We ’re closing our cursor and our connection
+        cursor.close()
+        connect.close()
+    except Exception as e :
+        print("Caught an exception : ", e)
+        ## We ’re sending the data
+    return jsonify(result)
