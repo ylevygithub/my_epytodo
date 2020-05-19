@@ -1,0 +1,16 @@
+<div id="task_page">
+    <div class="taskForm">
+        <p id="taskText"></p>
+        <form name="myForm" id="form_id">
+            <input id="titleID" class="taskEntry" type="text" name="title" placeholder="Title"/>
+            <input id="beginID" class="taskEntry" type="datetime-local" name="begin" placeholder="Begin"/>
+            <input id="endID" class="taskEntry" type="datetime-local" name="end" placeholder="End"/>
+            <select id="statusID" class="taskEntry" >
+                <option>not started</option>
+                <option>in progress</option>
+                <option>done</option>
+            </select>
+            <input class="validation" id="valid_button" type="button" onclick="transformJSON()" value="VALIDATE"/>
+        </form>
+    </div>
+</div>

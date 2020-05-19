@@ -1,0 +1,30 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/task.css') }}">
+{% for task_id in task.tasks %}
+    <div class="task">
+        <div class="action">
+            <button class="modify" onclick="modifyTask({{ task_id }}, '{{ task.tasks[task_id].title }}', '{{ task.tasks[task_id].begin }}', '{{ task.tasks[task_id].end }}', '{{ task.tasks[task_id].status }}')">Modify</button>
+            <button class="delete" onclick="deleteTask({{ task_id }})">Delete</button>
+        </div>
+        <p class="taskTitle">{{ task.tasks[task_id].title }}</p>
+        <div class="taskID">
+            <p>{{ task_id }}</p>
+        </div>
+        <div class="information">
+            <p class="taskBegin">Begin :</p>
+            <p class="taskBegin">{{ task.tasks[task_id].begin }}</p>
+            <p class="taskEnd">End :</p> 
+            <p class="taskBegin">{{ task.tasks[task_id].end }}</p>
+            <p class="taskStatus">Status :</p>
+            <p class="taskBegin">{{ task.tasks[task_id].status }}</p>
+        </div>
+    </div>
+{% endfor %}
+<div id="myHeader">
+    <p>Hello {{ user.username }}</p>
+    <button class="signOut" onclick="signout()">SIGN OUT</button>
+</div>
+<button id="addTask" onclick="displayTask('Create new task')">
+    <span>+</span>
+</button>
+{% include 'task_form.html' %}

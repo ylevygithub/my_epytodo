@@ -1,0 +1,5 @@
+DATABASE_HOST='localhost'
+DATABASE_NAME='epytodo'
+DATABASE_USER='yaacov'
+DATABASE_PASS='password'
+DATABASE_SOCK='/var/lib/mysql/mysql.sock'

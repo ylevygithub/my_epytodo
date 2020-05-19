@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+        {% if user_data == None %}
+            <title>Welcome stranger</title>
+        {% else %}
+            <title>Welcome {{ user_data.username }} </title>
+        {% endif %}
+    </head>
+    <body>
+        {% if user_data == None %}
+            {% include 'login.html' %}
+        {% else %}
+            {% with user = user_data, task = task_data %}
+                {% include 'task.html'%}
+            {% endwith %}
+        {% endif %}
+        {% include 'infobox.html' %}
+    </body>
+</html>
